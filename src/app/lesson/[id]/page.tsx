@@ -16,7 +16,13 @@ export default async function LessonPage({
   const lesson = findLesson(id);
   if (!lesson) notFound();
   return (
-    <Suspense fallback={null}>
+    <Suspense
+      fallback={
+        <main className="mx-auto max-w-xl px-4 py-8 text-muted" role="status">
+          Memuat pelajaran...
+        </main>
+      }
+    >
       <LessonPlayer lesson={lesson} />
     </Suspense>
   );

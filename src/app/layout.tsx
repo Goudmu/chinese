@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Bricolage_Grotesque, Noto_Serif_SC } from "next/font/google";
 import "./globals.css";
 
@@ -24,7 +25,18 @@ export default function RootLayout({
       <body
         className={`${ui.variable} ${hanzi.variable} font-sans antialiased`}
       >
-        {children}
+        <Suspense
+          fallback={
+            <main
+              className="mx-auto max-w-xl px-4 py-8 text-muted"
+              role="status"
+            >
+              Memuat pelajaran...
+            </main>
+          }
+        >
+          {children}
+        </Suspense>
       </body>
     </html>
   );
