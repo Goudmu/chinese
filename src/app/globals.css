@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-paper: #f2f6f3;
+  --color-ink: #17302b;
+  --color-muted: #5f7a72;
+  --color-jade: #1e8a6e;
+  --color-jade-dark: #166b55;
+  --color-jade-soft: #d6efe4;
+  --color-seal: #c93a2b;
+  --color-seal-dark: #9f2b1f;
+  --color-seal-soft: #f9dad5;
+  --color-gold: #e0a526;
+  --color-line: #d3ded8;
+  --font-sans: var(--f-ui), system-ui, sans-serif;
+  --font-hanzi: var(--f-hanzi), "Noto Serif SC", serif;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.choice-selected {
+  animation: choice-pop 220ms ease-out;
+}
+
+.choice-correct {
+  animation: answer-celebrate 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.choice-wrong,
+.match-wrong {
+  animation: choice-shake 360ms ease-in-out;
+}
+
+.match-success {
+  animation: match-pop 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes choice-pop {
+  50% {
+    transform: scale(1.035);
+  }
+}
+
+@keyframes answer-celebrate {
+  35% {
+    transform: scale(1.06) rotate(-2deg);
+  }
+  70% {
+    transform: scale(0.98) rotate(1deg);
+  }
+}
+
+@keyframes choice-shake {
+  20%,
+  60% {
+    transform: translateX(-5px);
+  }
+  40%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes match-pop {
+  45% {
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
