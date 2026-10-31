@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import LessonPlayer from "@/components/LessonPlayer";
 import { allLessons, findLesson } from "@/data/course";
@@ -14,5 +15,9 @@ export default async function LessonPage({
   const { id } = await params;
   const lesson = findLesson(id);
   if (!lesson) notFound();
-  return <LessonPlayer lesson={lesson} />;
+  return (
+    <Suspense fallback={null}>
+      <LessonPlayer lesson={lesson} />
+    </Suspense>
+  );
 }
