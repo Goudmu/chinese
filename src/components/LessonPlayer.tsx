@@ -31,10 +31,19 @@ const shuffle = <T,>(a: T[]): T[] => {
   return b;
 };
 
-const prepare = (ex: Exercise): Exercise =>
-  ex.type === "matching" || ex.type === "paragraph"
-    ? ex
-    : { ...ex, options: shuffle(ex.options) };
+const prepare = (ex: Exercise): Exercise => {
+  if (ex.type === "matching") return ex;
+  if (ex.type === "paragraph") {
+    return {
+      ...ex,
+      blanks: ex.blanks.map((blank) => ({
+        ...blank,
+        options: shuffle([blank.answer, ...blank.extras]),
+      })),
+    };
+  }
+  return { ...ex, options: shuffle(ex.options) };
+};
 
 const makeQueue = (lesson: Lesson): Item[] =>
   shuffle(lesson.exercises)
@@ -567,37 +576,39 @@ export default function LessonPlayer({ lesson }: { lesson: Lesson }) {
                         Bagian {blank.id}
                       </h2>
                       <div className="flex flex-wrap gap-2">
-                        {[blank.answer, ...blank.extras].map((choice) => {
-                          const selected =
-                            paragraphAnswers[blank.id] === choice;
-                          const isCorrect = choice === blank.answer;
-                          const choiceColor =
-                            locked && isCorrect
-                              ? "border-jade bg-jade-soft text-jade-dark"
-                              : locked && selected
-                                ? "border-seal bg-seal-soft text-seal-dark"
-                                : selected
-                                  ? "border-jade bg-jade-soft text-jade-dark"
-                                  : "border-line bg-white hover:bg-paper";
-                          return (
-                            <button
-                              key={choice}
-                              type="button"
-                              disabled={locked}
-                              aria-pressed={selected}
-                              onClick={() => {
-                                setParagraphAnswers((answers) => ({
-                                  ...answers,
-                                  [blank.id]: choice,
-                                }));
-                                speakChinese(choice);
-                              }}
-                              className={`font-hanzi rounded-xl border-2 border-b-4 px-4 py-2 text-xl font-bold ${choiceColor} disabled:cursor-not-allowed`}
-                            >
-                              {choice}
-                            </button>
-                          );
-                        })}
+                        {(blank.options ?? [blank.answer, ...blank.extras]).map(
+                          (choice) => {
+                            const selected =
+                              paragraphAnswers[blank.id] === choice;
+                            const isCorrect = choice === blank.answer;
+                            const choiceColor =
+                              locked && isCorrect
+                                ? "border-jade bg-jade-soft text-jade-dark"
+                                : locked && selected
+                                  ? "border-seal bg-seal-soft text-seal-dark"
+                                  : selected
+                                    ? "border-jade bg-jade-soft text-jade-dark"
+                                    : "border-line bg-white hover:bg-paper";
+                            return (
+                              <button
+                                key={choice}
+                                type="button"
+                                disabled={locked}
+                                aria-pressed={selected}
+                                onClick={() => {
+                                  setParagraphAnswers((answers) => ({
+                                    ...answers,
+                                    [blank.id]: choice,
+                                  }));
+                                  speakChinese(choice);
+                                }}
+                                className={`font-hanzi rounded-xl border-2 border-b-4 px-4 py-2 text-xl font-bold ${choiceColor} disabled:cursor-not-allowed`}
+                              >
+                                {choice}
+                              </button>
+                            );
+                          },
+                        )}
                       </div>
                     </section>
                   ))}

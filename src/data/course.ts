@@ -7,6 +7,8 @@ import {
   sentence,
   w,
 } from "@/data/questions/helpers";
+import { u2_lessons } from "./questions/u2";
+import { u3_lessons } from "./questions/u3";
 
 export type Pair = { left: string; right: string };
 
@@ -29,6 +31,7 @@ export type Exercise =
         id: number;
         answer: string;
         extras: string[];
+        options?: string[];
       }[];
       pinyin?: string;
       translation?: string;
@@ -67,30 +70,14 @@ export const units: Unit[] = [
     title: "Angka",
     subtitle: "Berhitung dari satu sampai lima",
     hanzi: "数字",
-    lessons: [
-      {
-        id: "l3",
-        title: "Angka 1–5",
-        exercises: [
-          meaning(yi, n, angka),
-          meaning(er, n, angka),
-          meaning(san, n, angka),
-          hanziQ(er, n, hz(er)),
-          match(n),
-          meaning(si, n, angka),
-          meaning(wu, n, angka),
-          pinyinQ(san, n),
-          hanziQ(si, n, hz(si)),
-          pinyinQ(wu, n),
-          sentence("Satu, dua, tiga", ["一", "二", "三"], ["四", "五"]),
-          pinyinQ(yi, n),
-          hanziQ(wu, n, hz(wu)),
-          sentence("Tiga, empat, lima", ["三", "四", "五"], ["一", "二"]),
-          pinyinQ(er, n),
-          hanziQ(san, n, hz(san)),
-        ],
-      },
-    ],
+    lessons: u2_lessons,
+  },
+  {
+    id: "u3",
+    title: "Angka",
+    subtitle: "Berhitung dari satu sampai lima",
+    hanzi: "数字",
+    lessons: u3_lessons,
   },
 ];
 
