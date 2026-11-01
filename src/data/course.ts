@@ -12,6 +12,9 @@ import { u3_lessons } from "./questions/u3";
 import { u4_lessons } from "./questions/u4";
 import { u5_lessons } from "./questions/u5";
 import { u6_lessons } from "./questions/u6";
+import { u9_lessons } from "./questions/u9";
+import { u8_lessons } from "./questions/u8";
+import { u7_lessons } from "./questions/u7";
 
 export type Pair = { left: string; right: string };
 
@@ -107,6 +110,27 @@ export const units: Unit[] = [
     subtitle: "Memesan hidangan dan menanyakan harga",
     hanzi: "点餐与价格",
     lessons: u6_lessons,
+  },
+  {
+    id: "u7",
+    title: "Kesukaan & Hobi",
+    subtitle: "Membicarakan kesukaan dan hobi",
+    hanzi: "兴趣与爱好",
+    lessons: u7_lessons,
+  },
+  {
+    id: "u8",
+    title: "Makanan & Minuman",
+    subtitle: "Menyebut makanan, minuman, dan jumlahnya",
+    hanzi: "饮食",
+    lessons: u8_lessons,
+  },
+  {
+    id: "u9",
+    title: "Perjalanan & Transportasi",
+    subtitle: "Membicarakan perjalanan dan cara transportasi",
+    hanzi: "旅行与交通",
+    lessons: u9_lessons,
   },
 ];
 

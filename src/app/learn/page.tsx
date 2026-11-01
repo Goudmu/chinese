@@ -2,12 +2,34 @@
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import TopBar from "@/components/TopBar";
-import { units, allLessons } from "@/data/course";
+import { units } from "@/data/course";
 import { useProgress, useHydrated } from "@/store/useProgress";
 
 // Pergeseran horizontal tiap node supaya jalurnya berkelok
 const OFFSETS = [0, 44, 64, 44, 0, -44, -64, -44];
 const WIDE_COLUMNS = 3;
+const UNIT_BACKGROUNDS = [
+  "#fff3eb",
+  "#edf6ef",
+  "#fff5e8",
+  "#edf4ff",
+  "#f4efff",
+  "#fff2e8",
+  "#f2efff",
+  "#eaf7f7",
+  "#edf2fa",
+] as const;
+const UNIT_ICONS = [
+  ["💬", "👋", "✉️"],
+  ["👥", "🤝", "🏠"],
+  ["🍵", "☕", "🥛"],
+  ["📍", "🏙️", "🧭"],
+  ["👨‍👩‍👧‍👦", "🐾", "🐈"],
+  ["🍜", "🥟", "🧾"],
+  ["🎵", "🎨", "⚽"],
+  ["🍚", "🍲", "🥢"],
+  ["🚆", "✈️", "🧳"],
+] as const;
 
 type PathEdge = { id: string; path: string; unlocked: boolean };
 
@@ -67,7 +89,6 @@ export default function LearnPage() {
     () => (hydrated ? completedStore : []),
     [hydrated, completedStore],
   );
-  const currentId = allLessons.find((l) => !done.includes(l.id))?.id;
   const mainRef = useRef<HTMLElement>(null);
   const nodeRefs = useRef(new Map<string, HTMLElement>());
   const [pathEdges, setPathEdges] = useState<PathEdge[]>([]);
@@ -118,7 +139,7 @@ export default function LearnPage() {
           edges.push({
             id: `${unit.id}-${lesson.id}-${nextUnitIndex}-${nextLesson.id}`,
             path,
-            unlocked: done.includes(nextLesson.id) || nextLesson.id === currentId,
+            unlocked: true,
           });
         });
       });
@@ -134,7 +155,7 @@ export default function LearnPage() {
       observer.disconnect();
       window.removeEventListener("resize", updatePaths);
     };
-  }, [done, currentId]);
+  }, []);
 
   return (
     <>
@@ -165,9 +186,47 @@ export default function LearnPage() {
         {units.map((unit, unitIndex) => (
           <section
             key={unit.id}
-            className="relative z-10 pt-8 md:grid md:grid-cols-[minmax(190px,0.8fr)_minmax(0,2fr)] md:items-start md:gap-8"
+            className="relative z-10 px-2 pb-12 pt-8 md:grid md:grid-cols-[minmax(190px,0.8fr)_minmax(0,2fr)] md:items-start md:gap-8 md:px-6"
           >
-            <div className="relative overflow-hidden rounded-2xl bg-jade p-5 text-white md:sticky md:top-24">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 left-1/2 -z-10 w-screen -translate-x-1/2"
+              style={{
+                backgroundColor:
+                  UNIT_BACKGROUNDS[unitIndex % UNIT_BACKGROUNDS.length],
+                backgroundImage: `linear-gradient(to bottom, ${UNIT_BACKGROUNDS[unitIndex % UNIT_BACKGROUNDS.length]} 0%, ${UNIT_BACKGROUNDS[unitIndex % UNIT_BACKGROUNDS.length]} calc(100% - 120px), ${units[unitIndex + 1] ? UNIT_BACKGROUNDS[(unitIndex + 1) % UNIT_BACKGROUNDS.length] : UNIT_BACKGROUNDS[unitIndex % UNIT_BACKGROUNDS.length]} 100%)`,
+              }}
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 left-1/2 z-0 w-screen -translate-x-1/2 overflow-hidden"
+            >
+              {UNIT_ICONS[unitIndex % UNIT_ICONS.length].map(
+                (icon, iconIndex) => (
+                (() => {
+                  const seed = unitIndex * 17 + iconIndex * 31 + 1;
+                  const side = seed % 2 === 0 ? "left" : "right";
+                  const inset = 4 + ((seed * 7) % 8);
+                  const top = 18 + ((seed * 13) % 58);
+
+                  return (
+                    <span
+                      key={icon}
+                      className="absolute select-none text-5xl opacity-30 sm:text-6xl md:text-7xl"
+                      style={{
+                        [side]: `clamp(12px, ${inset}vw, 128px)`,
+                        top: `max(160px, ${top}%)`,
+                        animation: `unit-float ${4 + iconIndex}s ease-in-out ${iconIndex * -1.2}s infinite`,
+                      }}
+                    >
+                      {icon}
+                    </span>
+                  );
+                })()
+                ),
+              )}
+            </div>
+            <div className="relative z-10 overflow-hidden rounded-2xl bg-jade p-5 text-white md:sticky md:top-24">
               <span
                 aria-hidden
                 className="font-hanzi pointer-events-none absolute -right-2 -top-4 select-none text-[7rem] font-black leading-none text-white/15"
@@ -178,7 +237,7 @@ export default function LearnPage() {
               <p className="mt-1 text-sm text-white/85">{unit.subtitle}</p>
             </div>
 
-            <ol className="flex flex-col items-center gap-5 py-8 md:hidden">
+            <ol className="relative z-10 flex flex-col items-center gap-5 py-8 md:hidden">
               {unit.lessons.map((lesson, lessonIndex) => {
                 const globalIndex =
                   units
@@ -187,12 +246,7 @@ export default function LearnPage() {
                   lessonIndex;
                 const offset = OFFSETS[n++ % OFFSETS.length];
                 const isDone = done.includes(lesson.id);
-                const isCurrent = lesson.id === currentId;
-                const state = isDone
-                  ? "done"
-                  : isCurrent
-                    ? "current"
-                    : "locked";
+                const state = isDone ? "done" : "current";
 
                 return (
                   <li
@@ -215,7 +269,7 @@ export default function LearnPage() {
             </ol>
 
             <ol
-              className="relative hidden grid-cols-3 auto-rows-[124px] gap-y-10 py-8 md:grid"
+              className="relative z-10 hidden grid-cols-3 auto-rows-[124px] gap-y-10 py-8 md:grid"
               aria-label={`${unit.title}: daftar pelajaran`}
             >
               {unit.lessons.map((lesson, lessonIndex) => {
@@ -231,12 +285,7 @@ export default function LearnPage() {
                     ? position
                     : WIDE_COLUMNS - 1 - position;
                 const isDone = done.includes(lesson.id);
-                const isCurrent = lesson.id === currentId;
-                const state = isDone
-                  ? "done"
-                  : isCurrent
-                    ? "current"
-                    : "locked";
+                const state = isDone ? "done" : "current";
 
                 return (
                   <li

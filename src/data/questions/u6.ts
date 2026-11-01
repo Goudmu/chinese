@@ -853,4 +853,9 @@ export const u6_lessons: Lesson[] = [
     title: "U6 L1",
     exercises: u6_sentences,
   },
+  {
+    id: "u6_l2",
+    title: "U6 L2",
+    exercises: u6_paragraphs,
+  },
 ];

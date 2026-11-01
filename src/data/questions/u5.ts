@@ -607,7 +607,12 @@ const u5_paragraphs = [
 export const u5_lessons: Lesson[] = [
   {
     id: "u5_l1",
-    title: "U5 L1",
+    title: "kalimat",
     exercises: u5_sentences,
+  },
+  {
+    id: "u5_l2",
+    title: "paragraf",
+    exercises: u5_paragraphs,
   },
 ];
