@@ -1,5 +1,5 @@
 import type { Lesson } from "@/data/course";
-import { paragraph } from "@/data/questions/helpers";
+import { paragraph, sentence } from "@/data/questions/helpers";
 
 export const u2_lessons: Lesson[] = [
   {
@@ -428,4 +428,151 @@ export const u2_lessons: Lesson[] = [
       ),
     ],
   },
+];
+
+const u2_sentences = [
+  sentence(
+    "Ini teman saya.",
+    ["这", "是", "我", "的", "朋友"],
+    ["那", "老板", "谁"],
+  ),
+  sentence(
+    "Itu bos saya.",
+    ["那", "是", "我", "的", "老板"],
+    ["这", "同事", "吗"],
+  ),
+  sentence(
+    "Ini pacar saya.",
+    ["这", "是", "我", "的", "男朋友"],
+    ["那", "女朋友", "不"],
+  ),
+  sentence(
+    "Itu pacar saya.",
+    ["那", "是", "我", "的", "女朋友"],
+    ["这", "同学", "谁"],
+  ),
+  sentence(
+    "Ini rekan kerja saya.",
+    ["这", "是", "我", "的", "同事"],
+    ["那", "室友", "你"],
+  ),
+  sentence(
+    "Itu tetangga saya.",
+    ["那", "是", "我", "的", "邻居"],
+    ["这", "网友", "她"],
+  ),
+  sentence(
+    "Ini teman sekamar saya.",
+    ["这", "是", "我", "的", "室友"],
+    ["那", "老师", "他"],
+  ),
+  sentence(
+    "Itu teman online saya.",
+    ["那", "是", "我", "的", "网友"],
+    ["这", "学生", "们"],
+  ),
+  sentence(
+    "Mereka adalah teman-teman saya.",
+    ["他们", "是", "我", "的", "朋友", "们"],
+    ["这", "老板", "吗"],
+  ),
+  sentence(
+    "Mereka adalah teman sekelas.",
+    ["他们", "是", "同学", "们"],
+    ["那", "室友", "不"],
+  ),
+  sentence(
+    "Mereka adalah guru-guru.",
+    ["他们", "是", "老师", "们"],
+    ["那", "学生", "谁"],
+  ),
+  sentence(
+    "Mereka adalah dokter-dokter.",
+    ["他们", "是", "医生", "们"],
+    ["这", "同事", "我"],
+  ),
+  sentence(
+    "Mereka adalah siswa-siswa.",
+    ["他们", "是", "学生", "们"],
+    ["那", "邻居", "吗"],
+  ),
+  sentence(
+    "Mereka adalah orang Amerika.",
+    ["他们", "是", "美国", "人"],
+    ["这", "中国", "不"],
+  ),
+  sentence(
+    "Mereka adalah orang Tiongkok.",
+    ["他们", "是", "中国", "人"],
+    ["那", "同学", "谁"],
+  ),
+  sentence("Siapa itu?", ["那", "是", "谁"], ["这", "我", "吗"]),
+  sentence("Siapa ini?", ["这", "是", "谁"], ["那", "你", "不"]),
+  sentence("Siapa kamu?", ["你", "是", "谁"], ["这", "他", "吗"]),
+  sentence("Siapa dia (laki-laki)?", ["他", "是", "谁"], ["那", "学生", "们"]),
+  sentence(
+    "Siapa teman kamu?",
+    ["你", "的", "朋友", "是", "谁"],
+    ["那", "老板", "吗"],
+  ),
+  sentence(
+    "Siapa bos kamu?",
+    ["你", "的", "老板", "是", "谁"],
+    ["这", "同学", "不"],
+  ),
+  sentence(
+    "Siapa guru kamu?",
+    ["你", "的", "老师", "是", "谁"],
+    ["那", "室友", "们"],
+  ),
+  sentence(
+    "Siapa tetangga kamu?",
+    ["你", "的", "邻居", "是", "谁"],
+    ["这", "网友", "吗"],
+  ),
+  sentence(
+    "Ini buku saya.",
+    ["这", "是", "我", "的", "书"],
+    ["那", "谁", "不"],
+  ),
+  sentence(
+    "Itu nama saya.",
+    ["那", "是", "我", "的", "名字"],
+    ["这", "们", "吗"],
+  ),
+  sentence(
+    "Ini bukan teman saya.",
+    ["这", "不", "是", "我", "的", "朋友"],
+    ["那", "老板", "谁"],
+  ),
+  sentence(
+    "Itu bukan bos saya.",
+    ["那", "不", "是", "我", "的", "老板"],
+    ["这", "同事", "吗"],
+  ),
+  sentence(
+    "Saya adalah teman mereka.",
+    ["我", "是", "他们", "的", "朋友"],
+    ["那", "谁", "不"],
+  ),
+  sentence(
+    "Siapa nama kamu?",
+    ["你", "叫", "什么", "名字"],
+    ["谁", "那", "吗"],
+  ),
+  sentence(
+    "Mereka adalah teman sekamar saya.",
+    ["他们", "是", "我", "的", "室友", "们"],
+    ["这", "老师", "吗"],
+  ),
+  sentence(
+    "Ini adalah rekan kerja kami.",
+    ["这", "是", "我们", "的", "同事"],
+    ["那", "学生", "谁"],
+  ),
+  sentence(
+    "Itu adalah rekan kerja mereka.",
+    ["那", "是", "他们", "的", "同事"],
+    ["这", "朋友", "不"],
+  ),
 ];

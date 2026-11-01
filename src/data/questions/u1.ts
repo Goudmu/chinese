@@ -203,3 +203,128 @@ export const u1_lessons: Lesson[] = [
     ],
   },
 ];
+
+const u1_sentences = [
+  sentence("Halo.", ["你好"], ["再见", "我", "不"]),
+  sentence("Sampai jumpa.", ["再见"], ["你好", "他", "是"]),
+  sentence("Saya bernama Mary.", ["我", "叫", "玛丽"], ["是", "不", "你"]),
+  sentence("Kamu bernama David.", ["你", "叫", "大卫"], ["他", "不", "人"]),
+  sentence(
+    "Dia (laki-laki) bernama David.",
+    ["他", "叫", "大卫"],
+    ["她", "医生", "再见"],
+  ),
+  sentence(
+    "Dia (perempuan) bernama Mary.",
+    ["她", "叫", "玛丽"],
+    ["他", "学生", "中国"],
+  ),
+  sentence("Saya seorang siswa.", ["我", "是", "学生"], ["老师", "不", "医生"]),
+  sentence(
+    "Dia (perempuan) adalah dokter.",
+    ["她", "是", "医生"],
+    ["中国", "再见", "你"],
+  ),
+  sentence(
+    "Dia orang Amerika.",
+    ["他", "是", "美国", "人"],
+    ["中国", "老师", "不"],
+  ),
+  sentence(
+    "Saya orang Tiongkok.",
+    ["我", "是", "中国", "人"],
+    ["美国", "学生", "她"],
+  ),
+  sentence("Kamu adalah guru.", ["你", "是", "老师"], ["他", "不", "学生"]),
+  sentence(
+    "Dia (laki-laki) adalah guru.",
+    ["他", "是", "老师"],
+    ["她", "医生", "再见"],
+  ),
+  sentence("Kamu adalah siswa.", ["你", "是", "学生"], ["我", "人", "美国"]),
+  sentence(
+    "Dia (perempuan) adalah siswa.",
+    ["她", "是", "学生"],
+    ["你", "中国", "不"],
+  ),
+  sentence(
+    "Saya orang Amerika.",
+    ["我", "是", "美国", "人"],
+    ["中国", "医生", "他"],
+  ),
+  sentence(
+    "Kamu orang Tiongkok.",
+    ["你", "是", "中国", "人"],
+    ["她", "老师", "不"],
+  ),
+  sentence(
+    "Apakah kamu guru?",
+    ["你", "是", "老师", "吗"],
+    ["不", "医生", "他"],
+  ),
+  sentence(
+    "Apakah dia (laki-laki) siswa?",
+    ["他", "是", "学生", "吗"],
+    ["不", "她", "再见"],
+  ),
+  sentence(
+    "Apakah kamu orang Tiongkok?",
+    ["你", "是", "中国", "人", "吗"],
+    ["美国", "不", "医生"],
+  ),
+  sentence(
+    "Apakah kamu dokter?",
+    ["你", "是", "医生", "吗"],
+    ["不", "我", "学生"],
+  ),
+  sentence(
+    "Apakah dia (perempuan) dokter?",
+    ["她", "是", "医生", "吗"],
+    ["他", "人", "再见"],
+  ),
+  sentence(
+    "Apakah kamu orang Amerika?",
+    ["你", "是", "美国", "人", "吗"],
+    ["中国", "老师", "她"],
+  ),
+  sentence(
+    "Apakah dia (perempuan) orang Tiongkok?",
+    ["她", "是", "中国", "人", "吗"],
+    ["不", "学生", "你"],
+  ),
+  sentence(
+    "Apakah kamu siswa?",
+    ["你", "是", "学生", "吗"],
+    ["他", "不", "中国"],
+  ),
+  sentence(
+    "Saya bukan dokter.",
+    ["我", "不", "是", "医生"],
+    ["老师", "她", "人"],
+  ),
+  sentence(
+    "Dia (perempuan) bukan guru.",
+    ["她", "不", "是", "老师"],
+    ["学生", "你", "中国"],
+  ),
+  sentence(
+    "Dia (laki-laki) bukan orang Amerika.",
+    ["他", "不", "是", "美国", "人"],
+    ["中国", "再见", "你"],
+  ),
+  sentence(
+    "Kamu bukan siswa.",
+    ["你", "不", "是", "学生"],
+    ["我", "医生", "中国"],
+  ),
+  sentence(
+    "Saya bukan orang Tiongkok.",
+    ["我", "不", "是", "中国", "人"],
+    ["美国", "老师", "他"],
+  ),
+  sentence(
+    "Dia (laki-laki) bukan dokter.",
+    ["他", "不", "是", "医生"],
+    ["她", "学生", "再见"],
+  ),
+];

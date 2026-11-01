@@ -1,5 +1,158 @@
 import type { Lesson } from "@/data/course";
-import { paragraph } from "@/data/questions/helpers";
+import { paragraph, sentence } from "@/data/questions/helpers";
+
+const u3_sentences = [
+  sentence(
+    "Saya mau satu cangkir kopi.",
+    ["我", "要", "一", "杯", "咖啡"],
+    ["瓶", "茶", "两"],
+  ),
+  sentence(
+    "Saya mau dua gelas air.",
+    ["我", "要", "两", "杯", "水"],
+    ["一", "瓶", "不"],
+  ),
+  sentence(
+    "Apakah kamu mau satu botol susu?",
+    ["你", "要", "一", "瓶", "牛奶", "吗"],
+    ["杯", "三", "他"],
+  ),
+  sentence(
+    "Dia (laki-laki) mau tiga potong kue.",
+    ["他", "要", "三", "块", "蛋糕"],
+    ["个", "四", "她"],
+  ),
+  sentence(
+    "Dia (perempuan) mau empat roti.",
+    ["她", "要", "四", "个", "面包"],
+    ["块", "五", "他"],
+  ),
+  sentence(
+    "Kamu mau berapa gelas teh?",
+    ["你", "要", "几", "杯", "茶"],
+    ["瓶", "吗", "谁"],
+  ),
+  sentence(
+    "Kamu mau berapa potong kue?",
+    ["你", "要", "几", "块", "蛋糕"],
+    ["个", "两", "吗"],
+  ),
+  sentence(
+    "Kamu mau berapa botol cola?",
+    ["你", "要", "几", "瓶", "可乐"],
+    ["杯", "不", "我"],
+  ),
+  sentence(
+    "Saya mau lima roti.",
+    ["我", "要", "五", "个", "面包"],
+    ["块", "四", "和"],
+  ),
+  sentence(
+    "Saya mau kopi dan teh.",
+    ["我", "要", "咖啡", "和", "茶"],
+    ["水", "不", "杯"],
+  ),
+  sentence(
+    "Apakah kamu mau jus dan air?",
+    ["你", "要", "果汁", "和", "水", "吗"],
+    ["可乐", "他", "不"],
+  ),
+  sentence(
+    "Dia (laki-laki) mau susu dan roti.",
+    ["他", "要", "牛奶", "和", "面包"],
+    ["蛋糕", "她", "两"],
+  ),
+  sentence(
+    "Dia (perempuan) mau kue dan kopi.",
+    ["她", "要", "蛋糕", "和", "咖啡"],
+    ["茶", "他", "块"],
+  ),
+  sentence(
+    "Saya mau satu gelas teh dan satu potong kue.",
+    ["我", "要", "一", "杯", "茶", "和", "一", "块", "蛋糕"],
+    ["瓶", "个", "两"],
+  ),
+  sentence(
+    "Guru mau dua cangkir kopi.",
+    ["老师", "要", "两", "杯", "咖啡"],
+    ["瓶", "三", "学生"],
+  ),
+  sentence(
+    "Bos mau satu botol air.",
+    ["老板", "要", "一", "瓶", "水"],
+    ["杯", "同事", "不"],
+  ),
+  sentence(
+    "Teman saya mau dua botol cola.",
+    ["我", "的", "朋友", "要", "两", "瓶", "可乐"],
+    ["杯", "你", "三"],
+  ),
+  sentence(
+    "Teman sekelas mau tiga gelas jus.",
+    ["同学", "们", "要", "三", "杯", "果汁"],
+    ["瓶", "水", "吗"],
+  ),
+  sentence(
+    "Ini kopi saya.",
+    ["这", "是", "我", "的", "咖啡"],
+    ["那", "茶", "你"],
+  ),
+  sentence(
+    "Itu susu kamu.",
+    ["那", "是", "你", "的", "牛奶"],
+    ["这", "水", "我"],
+  ),
+  sentence(
+    "Ini kopi siapa?",
+    ["这", "是", "谁", "的", "咖啡"],
+    ["那", "茶", "吗"],
+  ),
+  sentence(
+    "Itu kue siapa?",
+    ["那", "是", "谁", "的", "蛋糕"],
+    ["这", "面包", "你"],
+  ),
+  sentence(
+    "Saya tidak mau teh.",
+    ["我", "不", "要", "茶"],
+    ["咖啡", "他", "和"],
+  ),
+  sentence(
+    "Dia (laki-laki) tidak mau kopi.",
+    ["他", "不", "要", "咖啡"],
+    ["她", "牛奶", "吗"],
+  ),
+  sentence(
+    "Apakah kamu mau teh?",
+    ["你", "要", "茶", "吗"],
+    ["不", "咖啡", "和"],
+  ),
+  sentence(
+    "Teman sekelas mau berapa roti?",
+    ["同学", "们", "要", "几", "个", "面包"],
+    ["块", "吗", "谁"],
+  ),
+  sentence(
+    "Rekan kerja saya mau empat gelas teh.",
+    ["我", "的", "同事", "要", "四", "杯", "茶"],
+    ["瓶", "五", "你"],
+  ),
+  sentence(
+    "Ini adalah teman saya dan guru saya.",
+    ["这", "是", "我", "的", "朋友", "和", "我", "的", "老师"],
+    ["那", "咖啡", "吗"],
+  ),
+  sentence(
+    "Pacar saya (laki-laki) mau satu gelas jus.",
+    ["我", "的", "男朋友", "要", "一", "杯", "果汁"],
+    ["瓶", "女朋友", "两"],
+  ),
+  sentence(
+    "Rekan kerja kamu mau tiga roti.",
+    ["你", "的", "同事", "要", "三", "个", "面包"],
+    ["块", "四", "不"],
+  ),
+];
 
 export const u3_lessons: Lesson[] = [
   {

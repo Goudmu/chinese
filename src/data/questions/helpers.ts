@@ -54,14 +54,25 @@ export const match = (words: Word[]): Exercise => ({
 
 export const sentence = (
   text: string,
-  answer: string[],
+  answer: string[] | string[][],
   extras: string[],
-): Exercise => ({
-  type: "word_bank",
-  prompt: `Susun kalimat: “${text}”`,
-  options: [...answer, ...extras],
-  answer,
-});
+): Exercise => {
+  const answers: string[][] = isAnswerVariants(answer) ? answer : [answer];
+  const options = [...new Set([...answers.flat(), ...extras])];
+
+  return {
+    type: "word_bank",
+    prompt: `Susun kalimat: “${text}”`,
+    options,
+    answer: answers,
+  };
+};
+
+function isAnswerVariants(
+  answer: string[] | string[][],
+): answer is string[][] {
+  return answer.length > 0 && Array.isArray(answer[0]);
+}
 
 export const paragraph = (
   prompt: string,

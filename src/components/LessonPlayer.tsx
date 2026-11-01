@@ -224,7 +224,7 @@ export default function LessonPlayer({ lesson }: { lesson: Lesson }) {
           : false;
   const correctAnswer =
     ex.type === "word_bank"
-      ? ex.answer.join("")
+      ? (ex.answer[0] ?? []).join("")
       : ex.type === "multiple_choice"
         ? ex.answer
         : ex.type === "paragraph"
@@ -254,9 +254,13 @@ export default function LessonPlayer({ lesson }: { lesson: Lesson }) {
     if (ex.type === "matching") return;
     const ok =
       ex.type === "word_bank"
-        ? (answerMode === "typing"
-            ? typedAnswer.replace(/\s/g, "")
-            : built.map((k) => ex.options[k]).join("")) === ex.answer.join("")
+        ? ex.answer.some(
+            (answer) =>
+              (answerMode === "typing"
+                ? typedAnswer.replace(/\s/g, "")
+                : built.map((k) => ex.options[k]).join("")) ===
+              answer.join(""),
+          )
         : ex.type === "multiple_choice"
           ? picked === ex.answer
           : ex.blanks.every(
