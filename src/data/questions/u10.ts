@@ -1,5 +1,5 @@
 import type { Lesson } from "@/data/course";
-import { paragraph, sentence } from "./helpers";
+import { sentence } from "./helpers";
 
 const u10_sentences = [
   sentence(
@@ -288,4 +288,10 @@ const u10_sentences = [
   ),
 ];
 
-const u10_paragraphs = [];
+export const u10_lessons: Lesson[] = [
+  {
+    id: "u10_l1",
+    title: "U10 L1",
+    exercises: u10_sentences,
+  },
+];

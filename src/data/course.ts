@@ -13,6 +13,7 @@ import { u4_lessons } from "./questions/u4";
 import { u5_lessons } from "./questions/u5";
 import { u6_lessons } from "./questions/u6";
 import { u9_lessons } from "./questions/u9";
+import { u10_lessons } from "./questions/u10";
 import { u8_lessons } from "./questions/u8";
 import { u7_lessons } from "./questions/u7";
 
@@ -131,6 +132,13 @@ export const units: Unit[] = [
     subtitle: "Membicarakan perjalanan dan cara transportasi",
     hanzi: "旅行与交通",
     lessons: u9_lessons,
+  },
+  {
+    id: "u10",
+    title: "Barang & Harga",
+    subtitle: "Mendeskripsikan barang dan menanyakan harga",
+    hanzi: "物品与价格",
+    lessons: u10_lessons,
   },
 ];
 

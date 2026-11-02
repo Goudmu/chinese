@@ -257,6 +257,7 @@ export default function LearnPage() {
                     <LessonNode
                       lesson={lesson}
                       state={state}
+                      showTitle
                       nodeRef={(node) => {
                         const key = `mobile-${globalIndex}`;
                         if (node) nodeRefs.current.set(key, node);

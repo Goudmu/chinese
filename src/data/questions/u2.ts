@@ -574,7 +574,7 @@ const u2_paragraphs = [
 export const u2_lessons: Lesson[] = [
   {
     id: "u2_l1",
-    title: "Kaliamat",
+    title: "Kalimat",
     exercises: u2_sentences,
   },
   {
