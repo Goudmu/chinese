@@ -16,6 +16,7 @@ import { u9_lessons } from "./questions/u9";
 import { u10_lessons } from "./questions/u10";
 import { u8_lessons } from "./questions/u8";
 import { u7_lessons } from "./questions/u7";
+import { u11_lessons } from "./questions/u11";
 
 export type Pair = { left: string; right: string };
 
@@ -139,6 +140,13 @@ export const units: Unit[] = [
     subtitle: "Mendeskripsikan barang dan menanyakan harga",
     hanzi: "物品与价格",
     lessons: u10_lessons,
+  },
+  {
+    id: "u11",
+    title: "Waktu & Tanggal",
+    subtitle: "Membicarakan waktu dan tanggal",
+    hanzi: "时间与日期",
+    lessons: u11_lessons,
   },
 ];
 

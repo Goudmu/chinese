@@ -229,7 +229,7 @@ export default function LessonPlayer({ lesson }: { lesson: Lesson }) {
         ? ex.answer
         : ex.type === "paragraph"
           ? getParagraphAnswer(ex)
-          : "";
+          : ex.pairs.map(({ left, right }) => `${left} → ${right}`).join(" · ");
 
   function playFeedbackSound(correct: boolean) {
     if (audioFadeRef.current) clearInterval(audioFadeRef.current);
@@ -636,15 +636,21 @@ export default function LessonPlayer({ lesson }: { lesson: Lesson }) {
         className={`px-4 pb-6 pt-4 ${status === "correct" ? "bg-jade-soft" : status === "wrong" ? "bg-seal-soft" : "border-t border-line"}`}
         aria-live="polite"
       >
-        {status === "correct" && (
-          <p className="mb-3 text-lg font-extrabold text-jade-dark">Benar!</p>
-        )}
-        {status === "wrong" && (
-          <div className="mb-3">
-            <p className="text-lg font-extrabold text-seal-dark">
+        {status !== "idle" && (
+          <div
+            key={`${i}-${status}`}
+            className="answer-feedback mb-3"
+            role="status"
+          >
+            <p
+              className={`text-lg font-extrabold ${status === "correct" ? "text-jade-dark" : "text-seal-dark"}`}
+            >
+              {status === "correct" ? "Benar!" : "Belum tepat."}
+            </p>
+            <p className="mt-1 text-sm font-bold text-ink">
               Jawaban yang benar:
             </p>
-            <p className="font-hanzi text-xl font-bold text-seal-dark">
+            <p className="font-hanzi text-xl font-bold text-ink">
               {correctAnswer}
             </p>
           </div>

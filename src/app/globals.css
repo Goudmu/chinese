@@ -38,9 +38,24 @@ body {
   animation: match-pop 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+.answer-feedback {
+  animation: answer-slide-up 320ms ease-out both;
+}
+
 @keyframes choice-pop {
   50% {
     transform: scale(1.035);
+  }
+}
+
+@keyframes answer-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
